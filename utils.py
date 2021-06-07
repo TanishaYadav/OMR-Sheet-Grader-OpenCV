@@ -131,15 +131,15 @@ def show_answers(img, response , grading, solution, questions, choices):
             cv2.circle(img, (center_x, center_y), 50, (0, 255, 0), cv2.FILLED)
 
         elif grading[x] == 0:
-            cv2.circle(img, (center_x, center_y), 50, (0, 0, 255), cv2.FILLED)
+            cv2.circle(img, (center_x, center_y), 50, (255, 0, 0), cv2.FILLED)
             correct_x = (solution[x] * section_width) + section_width // 2
             correct_y = (x * section_height) + section_height // 2
-            cv2.circle(img, (correct_x, correct_y), 20, (255,64,25), 50)
+            cv2.circle(img, (correct_x, correct_y), 20, (25,64,255), 50)
 
         else:
             correct_x = (solution[x] * section_width) + section_width // 2
             correct_y = (x * section_height) + section_height // 2
-            cv2.circle(img, (correct_x, correct_y), 20, (255,64,25), 50)
+            cv2.circle(img, (correct_x, correct_y), 20, (25,64,255), 50)
 
     return img
 
