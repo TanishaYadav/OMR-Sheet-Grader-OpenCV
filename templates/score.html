@@ -1,0 +1,81 @@
+{% extends "base.html" %}
+
+{%block title%}
+
+OMR sheet Grader- Score and Grading
+
+            {% endblock%}
+
+
+
+{%block head%}
+        <link rel="stylesheet" href = '..\static\css\score.css'>
+
+            {%endblock%}
+
+
+
+{%block body%} 
+    <div class="heading">
+        <h1>Original</h1>
+        <h1>Evaluation</h1>
+    </div>
+    <div class="top">
+        <div class="original">
+               <img src = '{{url_for("display_image", filename = filename)}}' >
+        </div>
+        <div class="evaluation">
+            <div class = 'image'>
+
+                <img id="evaluated_image" src="data:image/jpeg;base64,{{ evaluated_image }}">
+            </div>
+        </div>
+    </div>
+    <div class="bottom">
+
+        <center><h1>
+            Summary
+        </h1></center>
+
+        <div class="summary">
+            
+            <div class="questions">
+                <div class="question">1</div>
+                <div class="question">2</div>
+                <div class="question">3</div>
+                <div class="question">4</div>
+                <div class="question">5</div>
+            </div>
+            <div class="status">
+                <div class="stat">correct</div>
+                <div class="stat">wrong</div>
+                <div class="stat">left</div>
+                <div class="stat">correct</div>
+                <div class="stat">wrong</div>
+            </div>
+            <div class="marks">
+                <div class="mark">+2</div>
+                <div class="mark">-0.5</div>
+                <div class="mark">0</div>
+                <div class="mark">+2</div>
+                <div class="mark">-0.5</div>
+            </div>
+           
+        </div>
+
+        <hr>
+        <div class="result">
+            
+            <h2>Total</h2>
+            <input type="text" class='score'>
+            <h2>Percentage</h2>
+            <input type="text" class='percentage'>
+        </div>
+        
+    </div>
+
+    <button class = 'btn' id = 'save'>
+        Save
+    </button>
+        
+            {%endblock%}

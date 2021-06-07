@@ -1,0 +1,64 @@
+{% extends "base.html" %}
+
+{%block title%}
+
+OMR sheet Grader- Scoreboard
+
+            {% endblock%}
+
+
+
+{%block head%}
+
+
+
+
+
+        <link rel="stylesheet" href = '..\static\css\scoreboard.css'>
+
+            {%endblock%}
+
+
+
+{%block body%} 
+
+        <center>
+            <h1>Scoreboard</h1>
+        </center>
+<table id="tabl" class = 'tab'>
+    <tr>
+      <th>Rollno</th>
+      <th>Marks (10)</th>
+      <th>Percentage</th>
+      <th>Options</th>
+    </tr>
+    <tr>
+      <td>Alfreds Futterkiste</td>
+      <td>Maria Anders</td>
+      <td>Germany</td>
+      <td><button class='edit' id='edit'>Edit</button><button class = 'delete' id = 'delete'>Delete</button</td>
+      
+      
+
+    </tr>
+    <tr>
+      <td>Berglunds snabbköp</td>
+      <td>Christina Berglund</td>
+      <td>Sweden</td>
+      <td><button class='edit' id='edit'>Edit</button><button class = 'delete' id = 'delete'>Delete</button</td>
+
+
+      
+      
+    </tr>
+</table>
+
+
+
+
+
+
+
+
+
+            {%endblock%}

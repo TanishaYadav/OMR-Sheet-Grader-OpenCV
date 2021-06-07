@@ -1,0 +1,73 @@
+*{
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+    
+}
+
+ul{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    background-color:rgba(8, 77, 34, 0.932);
+    
+
+ 
+   
+
+
+}
+
+
+li{
+    list-style-type: none;
+    padding: 1.5rem; 
+    border-radius: 0px;
+    color:white;
+    flex : 1;
+            
+
+}
+
+a{
+    text-decoration: none;
+    color: rgb(238, 229, 229);
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 1.3rem;
+    
+
+}
+
+
+li:hover {
+    background-color: #63ad6d;
+    color: rgb(0, 0, 0);
+  }
+/* a:hover{
+    color:black;
+} */
+
+.container{
+    height: 100vh;
+    background-image: linear-gradient(to left top  , rgb(18, 17, 77) , rgb(127, 189, 224));
+    background-image: linear-gradient(to right top, #62fcb7, #00d7be, #00c4dc, #00aee8, #1295de, #3896dd, #4c96dc, #5c97db, #3ab2ed, #12ccf6, #2ae4f7, #5ffbf1);
+
+    background-image: linear-gradient(to right top, #bde533, #a1e65e, #8ce57f, #7ee39b, #7cdeb1, #7cdebc, #7fdec5, #84decd, #7de5d5, #75ecde, #6bf4e7, #5ffbf1);
+
+    background: #1D976C;  /* fallback for old browsers */
+background: -webkit-linear-gradient(to right, #93F9B9, #1D976C);  /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to right bottom, #93F9B9, #1D976C); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+
+}
+
+.content{
+    width: 65%;
+    height: 100%;
+    
+    margin: auto;
+    padding-top: 2rem;
+    
+background: #e2e9e7;
+
+}

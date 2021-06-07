@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+
+{%block title%}
+
+OMR sheet Grader- Edit
+
+            {% endblock%}
+
+
+
+{%block head%}
+        <link rel="stylesheet" href = '..\static\css\edit.css'>
+
+            {%endblock%}
+
+
+
+{%block body%} 
+
+    <div class="edit-window">
+        <h1>
+            Edit
+        </h1>
+        <div class="name">
+            <h3>Rollno</h3>
+            <input type="text" name = "name" id = 'sname'>
+        </div>
+        
+        <div class="marks">
+            <h3>Marks</h3>
+            <input type="text" name = "marks" id = 'smarks'>
+        </div>
+        <div class="percentage">
+            <h3>Percentage</h3>
+            <input type="text" name = "percent" id = 'spercent'>
+        </div>
+            <button class = 'btn' id = 'ubtn'>
+                Save
+            </button>
+        
+    </div>
+
+
+
+
+            {%endblock%}

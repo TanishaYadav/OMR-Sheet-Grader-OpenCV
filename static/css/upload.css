@@ -1,0 +1,123 @@
+.upload-window{
+    width: 80%;
+    height: 60%;
+    margin: auto;
+    border-radius: 50px;
+    border-radius: 50px;
+    background: #e2e9e7;
+    box-shadow: inset 30px 30px 60px #c0c6c4,
+                inset -30px -30px 60px #ffffff;
+}
+
+p{
+    padding-top: 20%;
+    text-align: center;
+    font-family:Arial, Helvetica, sans-serif ;
+    color:ivory;
+    text-shadow: 2px 2px 4px #000000;
+    font-size: 1.3rem;
+}
+
+
+.conti {
+  width: 5rem;
+  height: 2rem;
+  position: absolute;
+  left: 45%;
+  top: 80%;
+  transform: translate(-50%, -50%);
+  
+}
+
+.center {
+  width: 5rem;
+  height: 2rem;
+  position: absolute;
+}
+
+.btn {
+  width: 180px;
+  height: 60px;
+  cursor: pointer;
+  background: transparent;
+  border: 2px solid #56e4b4;
+  outline: none;
+  transition: 1s ease-in-out;
+}
+
+svg {
+  position: absolute;
+  left: 0;
+  top: 0;
+  fill: none;
+  stroke: #fff;
+  stroke-dasharray: 150 480;
+  stroke-dashoffset: 150;
+  transition: 1s ease-in-out;
+}
+
+.btn:active {
+  
+  /* transform: translateY(10px); */
+  transform: scale(0.1);
+}
+
+
+.btn:hover {
+  transition: 1s ease-in-out;
+  background:mediumseagreen;
+}
+
+.btn:hover svg {
+  stroke-dashoffset: -480;
+}
+
+.btn span {
+  color: white;
+  font-size: 18px;
+  font-weight: 100;
+  text-shadow: 2px 2px 4px #000000;
+}
+
+
+
+.btnn{
+    background:#1AAB8A;
+    width: 20rem;
+    height: 4rem;
+    color:#fff;
+    border:none;
+    position:relative;
+    margin-top: 2rem;
+    font-size:1.3rem;
+    padding:1rem;
+    cursor:pointer;
+    transition:800ms ease all;
+    outline:none;
+  }
+
+.btnn:hover{
+    background:#fff;
+    color:#1AAB8A;
+  }
+  btnn:before,btnn:after{
+    content:'';
+    position:absolute;
+    top:0;
+    right:0;
+    height:2px;
+    width:0;
+    background: #1AAB8A;
+    transition:400ms ease all;
+  }
+  .btnn:after{
+    right:inherit;
+    top:inherit;
+    left:0;
+    bottom:0;
+  }
+  .btnn:hover:before,btnn:hover:after{
+    width:10%;
+    transition:800ms ease all;
+  }
+

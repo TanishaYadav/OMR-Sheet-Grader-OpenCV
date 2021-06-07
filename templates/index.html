@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+
+{%block title%}
+
+OMR sheet Grader- Login
+
+            {% endblock%}
+
+
+
+{%block head%}
+        <link rel="stylesheet" href = '..\static\css\login.css'>
+
+            {%endblock%}
+
+
+
+{%block body%}
+
+
+
+    <div class="login-window">
+
+
+        <h1>
+            Login
+        </h1>
+        <form method = 'POST'  action = {{url_for('load_login')}}>
+
+        <div class="username">
+            <h3>Username</h3>
+
+            <input type="text" name = "username" id = 'uname'>
+        </div>
+        
+        <div class="password">
+            <h3>Password</h3>
+
+            <input type="password" name = "password" id = 'upassword'>
+        </div>
+
+               <button class = 'btn' id = 'ubtn' type="submit">
+
+                Login
+            </button>
+              </form>
+
+
+                              {% with messages = get_flashed_messages(with_categories=true) %}
+
+                        {% if messages %}
+                        {% for message in messages %}
+                        <div class = 'success-flash'>{{message[1]}}</div>
+                      {% endfor %} {% endif %}
+                    {% endwith %}
+        
+    </div>
+
+
+
+
+            {%endblock%}

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <title>
+            {%block title%}     {%endblock%}
+
+        </title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Oswald&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="static/css/style.css">
+
+        {%block head%}
+
+
+            {%endblock%}
+    </head>
+
+    <body>
+       <nav>
+        <ul>
+            <a href = {{url_for('upload')}} class="nav"><li>Home</li></a>
+            <a href={{url_for('add_score')}} class="nav"><li>Score</li></a>
+            <a href={{url_for('add_score')}}  class="nav"><li>Marking Scheme</li></a>
+            <a href={{url_for('add_score')}}  class="nav"><li>Answer Key</li></a>
+            <a href={{url_for('show_scoreboard')}}  class="nav"><li>Scoreboard</li></a>
+            <a href={{url_for('show_activity')}}  class="nav"><li>Activity</li></a>
+            <a href={{url_for('load_login')}}  class="nav"><li>Login</li></a>
+
+        </ul>
+       </nav>
+
+
+<!--               {% with messages = get_flashed_messages(with_categories=true) %}-->
+
+<!--                        {% if messages %}-->
+<!--                        {% for category, message in messages %}-->
+<!--                        {% if category == 'error' %}-->
+<!--    <div class="alert red"  role="alert">-->
+<!--      {{ message }}-->
+<!--      <button type="button" class="close" data-dismiss="alert">-->
+<!--        <span aria-hidden="true">&times;</span>-->
+<!--      </button>-->
+<!--    </div>-->
+<!--    {% else %}-->
+<!--    <div class="alert alert-success alter-dismissable fade show" role="alert">-->
+<!--      {{ message }}-->
+<!--      <button type="button" class="close" data-dismiss="alert">-->
+<!--        <span aria-hidden="true">&times;</span>-->
+<!--      </button>-->
+<!--    </div>-->
+<!--    {% endif %} {% endfor %} {% endif %}-->
+<!--{% endwith %}-->
+
+
+
+
+
+       <div class="container">
+           <div class="content">
+            {%block body%}
+
+
+            {%endblock%}
+           </div>
+       </div>
+        
+
+
+
+
+        <script src="static/js/script.js"></script>
+    </body>
+</html>

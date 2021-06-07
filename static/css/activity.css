@@ -1,0 +1,26 @@
+h1{
+    font-family: sans-serif;
+    color: #fff;
+    text-shadow: horizontal-offset vertical-offset blur color;
+    text-shadow: 2px 4px 3px rgba(0,0,0,0.3);
+    margin: 1rem;
+    margin-top: 0rem;;
+}
+
+
+.outer{
+    display: flex;
+    flex-direction: column;
+    justify-content:initial;
+}
+
+.stat{
+    width: 80%;
+    padding: 1.5rem;
+    border-radius: 5px;
+    margin:auto;
+    margin-bottom: 1rem;
+    background-color: rgb(238, 236, 229);
+    box-shadow: 2px 4px 3px rgba(0,0,0,0.3);
+    color: rgb(105, 96, 96);
+}
