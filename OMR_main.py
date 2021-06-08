@@ -180,7 +180,10 @@ def evaluate_result(filename):
 
         score = utils.calc_score(grading,positive, negative)
         max_score = questions * positive
-        percentage = (score / max_score) * 100
+        if score < 0:
+            percentage = 0
+        else:
+            percentage = (score / max_score) * 100
 
         img_result = img_transformed.copy()
         img_result = utils.show_answers(img_result, response , grading, solution, questions, choices)
@@ -235,7 +238,7 @@ def evaluate_result(filename):
     data = io.BytesIO()
     imag.save(data, "JPEG")
     encoded_img_data = base64.b64encode(data.getvalue())
-    return encoded_img_data
+    return [encoded_img_data,rollno,score,percentage,grading]
 # cv2.imshow("Preview all",img_stacked)
 # cv2.imshow("Grade result1", img_final)
 #

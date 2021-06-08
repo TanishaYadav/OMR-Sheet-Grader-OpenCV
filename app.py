@@ -88,9 +88,9 @@ def upload():
         file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
         print('upload_image filename: ' + filename)
         evaluated_image = OMR_main.evaluate_result(f'static/uploads/{filename}')
-
+        print(evaluated_image[-1])
         flash('Image successfully uploaded and displayed below',category='success')
-        return render_template('score.html', filename=filename, evaluated_image = evaluated_image.decode('utf-8'))
+        return render_template('score.html', filename=filename, evaluated_image = evaluated_image)
     else:
         flash('Allowed image types are -> png, jpg, jpeg, gif', category='success')
         return redirect('/upload')
