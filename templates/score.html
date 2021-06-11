@@ -63,36 +63,49 @@ OMR sheet Grader- Score and Grading
             <div class="marks">
                 {% for response in evaluated_image[-1] %}
                         {% if response==1 %}
-                            <div class="mark-positive">+2</div>
+                            <div class="mark-positive">{{marking_scheme[0]}}</div>
 
                         {% elif response==0 %}
-                            <div class="mark-negative">-0.5</div>
+                            <div class="mark-negative">{{marking_scheme[1]}}</div>
 
                         {% else %}
                             <div class="mark-left">0</div>
                         {% endif %}
                     {% endfor %}
-
-
             </div>
            
         </div>
 
         <hr>
+                        {% with messages = get_flashed_messages(with_categories=true) %}
+                            {% if messages %}
+                                {% for message in messages %}
+                        <div class = 'success-flash'>{{message[1]}}</div>
+                                {% endfor %}
+                            {% endif %}
+                        {% endwith %}
+
+
         <div class="result">
-            
+
+          <form method = 'POST' action = {{url_for('add_score')}}  >
             <h2>Rollno</h2>
-            <input type="text" class='rollno' value = {{evaluated_image[1]}} disabled>
-            <h2>Total Score(Out of 10)</h2>
-            <input type="text" class='score' value = {{evaluated_image[2]}} disabled>
+            <input type="number" class = 'rollno' name='rollno' value = {{evaluated_image[1]}} >
+            <h2>Total Score</h2>
+            <input type="text" name='score' value = {{evaluated_image[2]}} >
             <h2>Percentage(%)</h2>
-            <input type="text" class='percentage' value = {{evaluated_image[3]}}  disabled>
-        </div>
-        
+            <input type="text" name='percentage' value = {{evaluated_image[3]}} >
+               <h2>Image name</h2>
+            <input type="text" name='image_name' value = {{filename}}  >
+
+
+       <button class = 'btn' id = 'save' type = 'submit'>
+        Save
+        </button>
+            </form>
+
+      </div>
     </div>
 
-    <button class = 'btn' id = 'save'>
-        Save
-    </button>
-        
+
             {%endblock%}

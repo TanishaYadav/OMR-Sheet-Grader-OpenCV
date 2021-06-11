@@ -31,15 +31,20 @@ PASSWORD1 =  'aaa'
 USERNAME2 = 'Admin2'
 PASSWORD2 = 'OpenIt2000'
 
+questions, choices = 5, 5
+solution = [0, 2, 0, 1, 4]
+positive = 2
+negative = - 0.5
 
 class Scores(db.Model):
     rollno = db.Column(db.Integer , primary_key = True)
-    score = db.Column(db.Integer, nullable = False)
+    score = db.Column(db.String, nullable = False)
     percentage = db.Column(db.String(4), nullable = False , default = '0%')
+    response_sheet = db.Column(db.String(255), nullable = False )
     date_evaluated = db.Column(db.DateTime, nullable = False , default = datetime.utcnow() )
 
     def __repr__(self):
-        return f'Score {self.rollno}'
+        return f'{self.rollno}'
 
 
 
@@ -65,32 +70,34 @@ def load_login():
             return redirect('upload')
         else:
             flash("Invalid Username or Password", category = 'error')
-            return redirect('/')
+            return redirect(url_for('load_login'))
     else:
         print('get request')
         return render_template('index.html')
 
 
 
-@app.route("/upload", methods = ['POST'])
+@app.route("/score", methods = ['POST'])
 def upload():
     if 'file' not in request.files:
-        flash("Please choose a file", category='error')
+        flash("Please fill the data required", category='error')
         return redirect('/upload')
     file = request.files['file']
-    print('collected')
     if file.filename == '':
         flash('No image selected for uploading',category = 'error')
         return redirect('/upload')
     if file and allowed_file(file.filename):
+        try:
+            filename = secure_filename(file.filename)
+            file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+            evaluated_image = OMR_main.evaluate_result(f'static/uploads/{filename}',solution,positive,negative)
+            print("....**********************...", request.url)
 
-        filename = secure_filename(file.filename)
-        file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
-        print('upload_image filename: ' + filename)
-        evaluated_image = OMR_main.evaluate_result(f'static/uploads/{filename}')
-        print(evaluated_image[-1])
-        flash('Image successfully uploaded and displayed below',category='success')
-        return render_template('score.html', filename=filename, evaluated_image = evaluated_image)
+            # flash('Image successfully uploaded and displayed below',category='success')
+            return render_template('score.html', filename=filename, evaluated_image = evaluated_image, marking_scheme = [positive,negative])
+        except:
+            flash('Please Upload Correct Photo of OMR Sheet', category='success')
+            return redirect(url_for('upload_form'))
     else:
         flash('Allowed image types are -> png, jpg, jpeg, gif', category='success')
         return redirect('/upload')
@@ -109,27 +116,43 @@ def display_image(filename):
 #     return OMR_main.evaluate_result(filename)
 
 
-
-
-
-
-
-
-
 # to add new student's result to scoreboard
-@app.route('/scoreboard', methods  = ['GET','POST'])
+@app.route('/scoreboard', methods  = ['POST'])
 def add_score():
-    if request.method == 'POST':
-        rollno = request.form['rollno']
-        score = request.form['score']
-        percentage = request.form['percentage']
-        new_score = Scores(rollno = rollno, score = score, percentage = percentage)
-        db.session.add(new_score)
-        db.session.commit()
-        return redirect('/scoreboard')
-    else:
+    print("..................",request.url)
+
+    if request.method=='POST':
         all_scores = Scores.query.order_by(Scores.rollno).all()
-        return render_template('scoreboard.html', scores = all_scores)
+        try:
+            rollno = int(request.form['rollno'])
+            score = request.form['score']
+            percentage = request.form['percentage']
+            response_sheet = request.form['image_name']
+            new_score = Scores(rollno = rollno, score = score, percentage = percentage, response_sheet = response_sheet)
+        except:
+            flash("Please upload correct photo", category='error')
+            return redirect(url_for('upload_form'))
+
+        try:
+            db.session.add(new_score)
+            db.session.commit()
+            flash("Student score successfully added", category='success')
+            return render_template('scoreboard.html', scores=all_scores)
+        except:
+            flash("This record is already present", category='success')
+            return redirect(url_for('upload_form'))
+
+
+
+
+@app.route("/scoreboard")
+def show_scoreboard():
+    all_scores = Scores.query.order_by(Scores.rollno).all()
+    return render_template('scoreboard.html', scores=all_scores)
+
+
+
+
 
 @app.route('/delete/<int:rollno>')
 def delete(rollno):
@@ -141,7 +164,7 @@ def delete(rollno):
 
 @app.route('/edit/<int:rollno>',methods = ['POST','GET'])
 def edit(rollno):
-    score = Scores.query.get_or_404(id)
+    score = Scores.query.get_or_404(rollno)
     if request.method == 'POST':
         score.rollno = request.form['rollno']
         score.score = request.form['score']
@@ -152,39 +175,40 @@ def edit(rollno):
         return render_template('edit.html', score = score)
 
 
+@app.route('/marking_scheme',methods = ['POST','GET'])
+def marking_scheme():
+    if request.method == 'POST':
+        global positive
+        global negative
+        positive = float(request.form['correct'])
+        negative = float(request.form['wrong'])
+        flash("Marking Scheme successfully updated !", category='success')
+        return redirect(url_for('marking_scheme'))
+    else:
+        return render_template('marking_scheme.html',pos = positive, neg = negative)
+
+
+@app.route('/answer_key',methods = ['POST','GET'])
+def answer_key():
+    if request.method == 'POST':
+        global solution
+        solution = []
+        for i in range(5):
+            option = request.form[str(i+1)]
+            solution.append(int(option))
+        flash("Answer Key successfully updated !", category='success')
+        return redirect(url_for('answer_key'))
+    else:
+        return render_template('answer_key.html')
 
 
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-@app.route("/scoreboard")
-def show_scoreboard():
-    return render_template('scoreboard.html')
+#
+# @app.route("/scoreboard")
+# def show_scoreboard():
+#     return render_template('scoreboard.html')
 
 # @app.route("/edit")
 # def edit():

@@ -21,13 +21,11 @@
     <body>
        <nav>
         <ul>
-            <a href = {{url_for('upload')}} class="nav"><li>Home</li></a>
-            <a href={{url_for('add_score')}} class="nav"><li>Score</li></a>
-            <a href={{url_for('add_score')}}  class="nav"><li>Marking Scheme</li></a>
-            <a href={{url_for('add_score')}}  class="nav"><li>Answer Key</li></a>
-            <a href={{url_for('show_scoreboard')}}  class="nav"><li>Scoreboard</li></a>
-            <a href={{url_for('show_activity')}}  class="nav"><li>Activity</li></a>
-            <a href={{url_for('load_login')}}  class="nav"><li>Login</li></a>
+            <a href = {{url_for('upload_form')}} class="nav"><li>Upload</li></a>
+            <a href={{url_for('show_scoreboard')}} class="nav"><li>Scoreboard</li></a>
+            <a href={{url_for('marking_scheme')}}  class="nav"><li>Marking Scheme</li></a>
+            <a href={{url_for('answer_key')}}  class="nav"><li>Answer Key</li></a>
+            <a href={{url_for('load_login')}}  class="nav"><li>Logout</li></a>
 
         </ul>
        </nav>

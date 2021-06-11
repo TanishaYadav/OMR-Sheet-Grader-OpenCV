@@ -192,8 +192,9 @@ def load_image(img):
     gray = cv2.cvtColor(img,cv2.COLOR_BGR2GRAY)
     blur = cv2.GaussianBlur(gray,(5,5),1)
     # canny = cv2.Canny(blur,100,100)
-    threshold = cv2.threshold(blur,140,255,cv2.THRESH_BINARY_INV)[1]
-
+    threshold = cv2.threshold(blur,145,255,cv2.THRESH_BINARY_INV)[1]
+    # cv2.imshow("digitvalue",threshold)
+    # cv2.waitKey(0)
     reshaped_img = cv2.resize(threshold,(28,28))
     img_aaray = np.array(reshaped_img)
     img_resh = img_aaray.reshape(1,28,28,1)

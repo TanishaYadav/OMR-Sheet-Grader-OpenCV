@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+
+{%block title%}
+
+OMR sheet Grader- Marking Scheme
+
+            {% endblock%}
+
+
+
+{%block head%}
+        <link rel="stylesheet" href = '..\static\css\marking_scheme.css'>
+
+            {%endblock%}
+
+
+
+{%block body%}
+
+            {% with messages = get_flashed_messages(with_categories=true) %}
+                {% if messages %}
+                {% for message in messages %}
+                <div class = 'success-flash'>{{message[1]}}</div>
+                {% endfor %}
+                {% endif %}
+            {% endwith %}
+<form method="post" action = {{url_for('marking_scheme')}}>
+        <div class="marking-scheme-window">
+        <h1>
+            Marking Scheme
+        </h1>
+        <div class="correct">
+            <h3>Correct</h3>
+            <input type="text" name = "correct" id = 'scorrect' value ={{pos}}>
+        </div>
+
+        <div class="wrong">
+            <h3>Wrong</h3>
+            <input type="text" name = "wrong" id = 'swrong' value ={{neg}}>
+        </div>
+
+            <button class = 'btn' type = 'submit'>
+                Save
+            </button>
+
+    </div>
+</form>
+
+
+
+
+            {%endblock%}

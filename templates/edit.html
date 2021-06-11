@@ -21,23 +21,29 @@ OMR sheet Grader- Edit
         <h1>
             Edit
         </h1>
+         <form method = 'POST' action ={{url_for('edit', rollno = score.rollno)}}>
         <div class="name">
+
             <h3>Rollno</h3>
-            <input type="text" name = "name" id = 'sname'>
+            <input type="text" name = "rollno" id = 'sname' value = {{score.rollno}}>
         </div>
         
         <div class="marks">
             <h3>Marks</h3>
-            <input type="text" name = "marks" id = 'smarks'>
+            <input type="text" name = "score" id = 'smarks' value = {{score.score}}>
         </div>
         <div class="percentage">
             <h3>Percentage</h3>
-            <input type="text" name = "percent" id = 'spercent'>
+            <input type="text" name = "percentage" id = 'spercent' value = {{score.percentage}}>
         </div>
-            <button class = 'btn' id = 'ubtn'>
+             <div class="image_name">
+            <h3>Image Name</h3>
+            <input type="text" name = "image_name" id = 'simage_name' value = {{score.response_sheet}}>
+        </div>
+            <button class = 'btn' id = 'ubtn' type = 'submit'>
                 Save
             </button>
-        
+       </form>
     </div>
 
 

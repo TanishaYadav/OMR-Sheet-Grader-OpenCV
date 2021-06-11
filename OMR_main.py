@@ -5,7 +5,13 @@ from PIL import Image as im
 import base64
 import io
 
-
+# img_width, img_height = 700, 700
+questions, choices = 5, 5
+solution = [0, 2, 0, 1, 4]
+positive = 2
+negative = - 0.5
+webcam_feed = False
+count = 0
 
 # capture = cv2.VideoCapture(0)
 # capture.set(10, 150)
@@ -18,14 +24,8 @@ import io
 #         img = cv2.imread('Resources/paper 2.jpeg')
 #         img_width, img_height = 600, 750
 
-def evaluate_result(filename):
-    # img_width, img_height = 700, 700
-    questions, choices = 5, 5
-    solution = [0, 2, 0, 1, 4]
-    positive = 2
-    negative = - 0.5
-    webcam_feed = False
-    count = 0
+def evaluate_result(filename, solution,positive,negative):
+
 
 
 
@@ -97,7 +97,7 @@ def evaluate_result(filename):
         # -------------------------------------------------------- Applying threshold ---------------------------------------------
 
         img_transformed_gray = cv2.cvtColor(img_transformed, cv2.COLOR_BGR2GRAY)
-        img_threshold = cv2.threshold(img_transformed_gray, 170, 255, cv2.THRESH_BINARY_INV)[1]                 #      intensity of white color
+        img_threshold = cv2.threshold(img_transformed_gray, 170, 255, cv2.THRESH_BINARY_INV)[1]           # src, threshold value, max_value, technique     intensity of white color
 
 
 
@@ -160,7 +160,7 @@ def evaluate_result(filename):
             # cv2.imshow(f"digit{i}",boxes[i])
             rollno_arr.append(utils.get_number(boxes[i]))
             print(rollno_arr)
-        rollno = ''.join(str(x) for x in rollno_arr)
+        rollno = int(''.join(str(x) for x in rollno_arr))
         print(rollno)
 
 
@@ -221,7 +221,7 @@ def evaluate_result(filename):
         img_canvas = np.zeros_like(img_resized)
         preprocessed_images_array = ([img_resized, img_gray, img_blur, img_canny],
                                      [img_contours, img_biggest_contour, img_transformed, img_threshold],
-                                     [img_result, img_raw_drawings, img_inverse_transformed, img_final])
+                                     [img_result,img_rollno_transformed, img_inverse_transformed, img_final])
     except:
         img_canvas = np.zeros_like(img_resized)
         preprocessed_images_array = ([img_resized, img_gray, img_blur, img_canny],
@@ -233,7 +233,8 @@ def evaluate_result(filename):
               ['Result','Raw Drawing','Inverse Perspective','Final']]
 
     img_stacked = utils.stack_images(0.2,preprocessed_images_array,labels)
-
+    # cv2.imshow("Preview all", img_stacked)
+    # cv2.waitKey(0)
     imag =  im.fromarray(img_final)                                       # till here is the function   -- shift + tab till here and uncomment below part
     data = io.BytesIO()
     imag.save(data, "JPEG")
@@ -256,3 +257,4 @@ def evaluate_result(filename):
 #     count += 1
 
 
+# temp  = evaluate_result('Resources/paper_3.jpeg')

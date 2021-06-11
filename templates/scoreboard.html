@@ -26,6 +26,7 @@ OMR sheet Grader- Scoreboard
             <h1>Scoreboard</h1>
         </center>
 <table id="tabl" class = 'tab'>
+
     <tr>
       <th>Rollno</th>
       <th>Marks (10)</th>
@@ -33,24 +34,15 @@ OMR sheet Grader- Scoreboard
       <th>Options</th>
     </tr>
     <tr>
-      <td>Alfreds Futterkiste</td>
-      <td>Maria Anders</td>
-      <td>Germany</td>
-      <td><button class='edit' id='edit'>Edit</button><button class = 'delete' id = 'delete'>Delete</button</td>
-      
-      
 
-    </tr>
-    <tr>
-      <td>Berglunds snabbköp</td>
-      <td>Christina Berglund</td>
-      <td>Sweden</td>
-      <td><button class='edit' id='edit'>Edit</button><button class = 'delete' id = 'delete'>Delete</button</td>
-
-
-      
-      
-    </tr>
+        {% for score in scores %}
+        <tr>
+        <td>{{score.rollno}}</td>
+        <td>{{score.score}}</td>
+        <td>{{score.percentage}}</td>
+        <td><button class='edit' id='edit-o'><a href = {{url_for('edit', rollno = score.rollno)}}>Edit</a></button><button class = 'delete' id = 'delete-o'><a href = {{url_for('delete', rollno = score.rollno)}}>Delete</a></button></td>
+        </tr>
+        {% endfor %}
 </table>
 
 
