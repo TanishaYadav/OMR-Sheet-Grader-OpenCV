@@ -130,7 +130,7 @@ def evaluate_result(filename, solution,positive,negative):
             arr = pxl_value[x]                              # a row of pxl_value
             index = np.where(arr == np.amax(arr))           # np.amax(arr) --> max element
 
-            if np.amax(arr) >= threshold * 0.7:
+            if np.amax(arr) >= threshold * 0.8:
                 response.append(index[0][0])
             else:
                 response.append(-1)

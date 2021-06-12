@@ -52,10 +52,10 @@ OMR sheet Grader- Score and Grading
                             <div class="stat-correct">Correct</div>
 
                         {% elif response==0 %}
-                            <div class="stat-wrong">wrong</div>
+                            <div class="stat-wrong">Wrong</div>
 
                         {% else %}
-                            <div class="stat-left">left</div>
+                            <div class="stat-left">Left</div>
                         {% endif %}
                     {% endfor %}
 
@@ -77,6 +77,7 @@ OMR sheet Grader- Score and Grading
         </div>
 
         <hr>
+        <div class = 'message'><center>
                         {% with messages = get_flashed_messages(with_categories=true) %}
                             {% if messages %}
                                 {% for message in messages %}
@@ -85,23 +86,36 @@ OMR sheet Grader- Score and Grading
                             {% endif %}
                         {% endwith %}
 
-
+        </center>
+    </div>
         <div class="result">
 
           <form method = 'POST' action = {{url_for('add_score')}}  >
+              <div class="form-left">
+              <div class="item">
             <h2>Rollno</h2>
             <input type="number" class = 'rollno' name='rollno' value = {{evaluated_image[1]}} >
+              </div>
+              <div class="item">
             <h2>Total Score</h2>
             <input type="text" name='score' value = {{evaluated_image[2]}} >
+              </div>
+              </div>
+              <div class="form-right">
+              <div class="item">
             <h2>Percentage(%)</h2>
             <input type="text" name='percentage' value = {{evaluated_image[3]}} >
+              </div>
+              <div class="item">
                <h2>Image name</h2>
             <input type="text" name='image_name' value = {{filename}}  >
-
+              </div>
+              </div>
 
        <button class = 'btn' id = 'save' type = 'submit'>
         Save
         </button>
+
             </form>
 
       </div>

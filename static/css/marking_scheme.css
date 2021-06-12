@@ -1,3 +1,5 @@
+
+
 .marking-scheme-window{
 
     width: 50%;
@@ -42,7 +44,7 @@ h3{
     font-family: sans-serif;
     text-shadow: 1px 2px 4px #9e9898;
     font-weight: lighter;
-
+      margin-bottom: 0.4rem;
 
 }
 
@@ -51,6 +53,9 @@ h3{
     outline: none;
     border:none;
     padding : 1rem 3rem;
+    margin-left: 5rem;
+    margin-top: 2rem;
+    width: 50%;
     /* border-top: 0px solid rgb(158, 152, 152);
     border-left: 1px solid rgb(158, 152, 152);
     border-radius: 10px; */
@@ -77,3 +82,11 @@ box-shadow:  18px 18px 36px #9e9c9c,
     /* transform: translateY(10px); */
     transform: scale(0.1);
   }
+
+form{
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    height: 80%;
+}

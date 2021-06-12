@@ -16,7 +16,7 @@ OMR sheet Grader- Answer Key
 
 
 {%block body%}
-
+<div class = 'message-success'><center>
         {% with messages = get_flashed_messages(with_categories=true) %}
             {% if messages %}
             {% for message in messages %}
@@ -24,9 +24,12 @@ OMR sheet Grader- Answer Key
             {% endfor %}
             {% endif %}
         {% endwith %}
+ </center>
+    </div>
 
+<div class="answer-key-window">
 <form method="post" action = {{url_for('answer_key')}}>
-        <div class="answer-key-window">
+
         <h1>
             Answer Key
         </h1>
@@ -87,10 +90,10 @@ OMR sheet Grader- Answer Key
                 Save
             </button>
 
-    </div>
+
 </form>
 
 
-
+ </div>
 
             {%endblock%}

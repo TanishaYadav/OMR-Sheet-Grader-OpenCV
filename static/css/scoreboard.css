@@ -38,8 +38,9 @@ h1{
 
 }
   
-.tab th {
+.tab th{
     padding: 1.5rem;
+    font-size: 1.3rem;
     text-align: left;
     background-color: #04AA6D;
     color: white;
@@ -58,6 +59,7 @@ h1{
       color: white;
       font-family: sans-serif;
       font-weight: 700;
+      box-shadow: #333 3px 3px 6px;
   }
 
   .delete{
@@ -65,4 +67,5 @@ h1{
     color: white;
     font-family: sans-serif;
     font-weight: 700;
+    box-shadow: #333 3px 3px 6px;
 }

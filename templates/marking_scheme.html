@@ -16,7 +16,7 @@ OMR sheet Grader- Marking Scheme
 
 
 {%block body%}
-
+<div class = 'message-success'><center>
             {% with messages = get_flashed_messages(with_categories=true) %}
                 {% if messages %}
                 {% for message in messages %}
@@ -24,8 +24,10 @@ OMR sheet Grader- Marking Scheme
                 {% endfor %}
                 {% endif %}
             {% endwith %}
-<form method="post" action = {{url_for('marking_scheme')}}>
+     </center>
+    </div>
         <div class="marking-scheme-window">
+<form method="post" action = {{url_for('marking_scheme')}}>
         <h1>
             Marking Scheme
         </h1>
@@ -43,10 +45,10 @@ OMR sheet Grader- Marking Scheme
                 Save
             </button>
 
-    </div>
+
 </form>
 
-
+ </div>
 
 
             {%endblock%}

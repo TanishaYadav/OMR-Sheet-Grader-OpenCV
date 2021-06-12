@@ -1,4 +1,4 @@
-{% extends "base.html" %}
+{% extends "base_home.html" %}
 
 {%block title%}
 
@@ -9,6 +9,8 @@ OMR sheet Grader- Login
 
 
 {%block head%}
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Berkshire+Swash&family=Fredericka+the+Great&family=Patua+One&display=swap" rel="stylesheet">
         <link rel="stylesheet" href = '..\static\css\login.css'>
 
             {%endblock%}
@@ -44,7 +46,9 @@ OMR sheet Grader- Login
                 Login
             </button>
               </form>
+    </div>
 
+ <div class = 'message'><center>
 
                               {% with messages = get_flashed_messages(with_categories=true) %}
 
@@ -53,7 +57,7 @@ OMR sheet Grader- Login
                         <div class = 'success-flash'>{{message[1]}}</div>
                       {% endfor %} {% endif %}
                     {% endwith %}
-        
+        </center>
     </div>
 
 

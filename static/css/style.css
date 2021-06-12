@@ -10,11 +10,6 @@ ul{
     flex-direction: row;
     justify-content: space-around;
     background-color:rgba(8, 77, 34, 0.932);
-    
-
- 
-   
-
 
 }
 
@@ -69,5 +64,21 @@ background: linear-gradient(to right bottom, #93F9B9, #1D976C); /* W3C, IE 10+/ 
     padding-top: 2rem;
     
 background: #e2e9e7;
+
+}
+
+.message{
+    color: #c90e0e;
+    font-family: sans-serif;
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+.message-success{
+    color: #2cc944;
+    font-family: sans-serif;
+    font-size: 1.3rem;
+    font-weight: 600;
+
 
 }
